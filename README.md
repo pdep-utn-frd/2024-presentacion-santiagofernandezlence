@@ -4,7 +4,7 @@ Hola, mi nombre es Santiago Fernández Lence y tengo 21 años. Me encata todo ti
 
 # Hobbies
 
-Me gusta jugar al fubtol, a los juegos de la computadora, juntarme con amigos en cualquier momento y pasar tiempo con mi familia. Tambien me gusta viajar y conocer nuevos lugares. Disfruto de ver peliculas y series pero con las series suelo colgarme mucho menos con GOT que es un serion.
+Me gusta jugar al fubtol, a los juegos de la computadora, juntarme con amigos en cualquier momento y pasar tiempo con mi familia. Tambien me gusta viajar y conocer nuevos lugares. Disfruto de ver peliculas y series pero con las series suelo colgarme mucho (menos con GOT que es un serion).
 
 # Expectativas de la materia
 
