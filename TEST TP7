@@ -1,0 +1,47 @@
+class Consola:
+    def jugabilidad(self):
+        return 0
+
+class Play(Consola):
+    def jugabilidad(self):
+        return 10
+
+class Portatil(Consola):
+    def __init__(self):
+        self.bateriaBaja = False
+
+    def jugabilidad(self):
+        return 1 if self.bateriaBaja else 8
+
+    def usar(self):
+        self.bateriaBaja = True
+
+class Delfina:
+    def __init__(self):
+        self.diversion = 0
+        self.consolaEnMano = Play()
+
+    def agarrar(self, consola):
+        self.consolaEnMano = consola
+
+    def jugar(self, videojuego):
+        if isinstance(self.consolaEnMano, Play):
+            self.diversion += videojuego.diversion()
+        elif isinstance(self.consolaEnMano, Portatil) and self.consolaEnMano.jugabilidad() > 5:
+            self.diversion += videojuego.diversion()
+        else:
+            self.diversion += 15
+
+    def obtener_diversion(self):
+        return self.diversion
+
+class Videojuego:
+    def diversion(nombre, jugabilidad):
+        if nombre == "arkanoid":
+            return 50
+        else nombre == "mario":
+            return 100 if jugabilidad > 5 else 15
+        else nombre == "pokemon":
+            return 10 * jugabilidad
+        else:
+            return 0
