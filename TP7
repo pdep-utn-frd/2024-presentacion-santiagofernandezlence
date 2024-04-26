@@ -1,0 +1,70 @@
+object Consola {
+    method jugabilidad() = 0
+    method usar() 
+}
+
+object Play extends Consola {
+    method jugabilidad() = 10
+}
+
+object Portatil extends Consola {
+    var bateriaBaja = false
+
+    method jugabilidad() = if (bateriaBaja) 1 else 8
+
+    method usar() {
+        bateriaBaja = true
+    }
+}
+
+object Delfina {
+    var diversion = 0
+    var consolaEnMano = Play
+
+    method agarrar(consola) {
+        consolaEnMano = consola
+    }
+
+    method jugar(videojuego) {
+        if (consolaEnMano == Play) {
+            diversion += videojuego.diversion()
+        } else if (consolaEnMano == Portatil && consolaEnMano.jugabilidad() > 5) {
+            diversion += videojuego.diversion()
+        } else {
+            diversion += 15
+        }
+    }
+
+    method diversion() = diversion
+}
+
+object Videojuego {
+    method diversion(nombre, jugabilidad) = when (nombre) {
+        "arkanoid" -> 50
+        "mario" -> if (jugabilidad > 5) 100 else 15
+        "pokemon" -> 10 * jugabilidad
+        else -> 0
+    }
+}
+
+// Crear instancias de las consolas y Delfina
+var play = Play
+var portatil = Portatil
+var delfina = Delfina
+
+// Crear algunos videojuegos
+var arkanoid = Videojuego.diversion("arkanoid", 0)
+var mario = Videojuego.diversion("mario", 0)
+var pokemon = Videojuego.diversion("pokemon", 0)
+
+// Delfina agarra el portátil
+delfina.agarrar(portatil)
+
+// Delfina juega algunos videojuegos
+delfina.jugar(arkanoid)
+delfina.jugar(mario)
+delfina.jugar(pokemon)
+
+// Obtener el nivel de diversión de Delfina
+var nivelDiversión = delfina.diversion()
+println("Nivel de diversión de Delfina: "nivelDiversión")
